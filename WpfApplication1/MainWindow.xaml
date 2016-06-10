@@ -1,0 +1,108 @@
+﻿<controls:MetroWindow x:Class="WpfApplication1.MainWindow"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+                      xmlns:system="clr-namespace:System;assembly=mscorlib"
+                      xmlns:viewModel="clr-namespace:WpfApplication1.ViewModel"
+                      xmlns:wpfApplication1="clr-namespace:WpfApplication1"
+                      Title="MainWindow"
+                      Width="823.265"
+                      Height="346.598"
+                      DataContext="{Binding Main,
+                                            Source={StaticResource Locator}}">
+    <Window.Resources>
+        
+        
+        <ResourceDictionary>
+            <ObjectDataProvider x:Key="CarMakesProvider" MethodName="GetValues" ObjectType="{x:Type system:Enum}">
+                <ObjectDataProvider.MethodParameters>
+                    <x:Type TypeName="viewModel:CarMake"></x:Type>
+                </ObjectDataProvider.MethodParameters>
+            </ObjectDataProvider>
+
+            <DataTemplate DataType="{x:Type viewModel:ChildViewModel}">
+                <wpfApplication1:ChildView />
+            </DataTemplate>
+        </ResourceDictionary>
+        
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <Button Width="100"
+                    Height="100"
+                    Margin="20"
+                    Command="{Binding DoItCommand}">
+                Press ME!
+            </Button>
+
+            <Button Width="100"
+                    Height="100"
+                    Margin="20"
+                    Command="{Binding DontDoItCommand}">
+                Don't Press ME!
+            </Button>
+
+            <StackPanel>
+                <Button Width="120"
+                        Height="50"
+                        Margin="20,45,20,5"
+                        Command="{Binding ProcessSomeDataCommand}">
+                    Process some data
+                </Button>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <Grid>
+                        <ProgressBar Height="20"
+                                     Margin="20,0,5,0"
+                                     Value="{Binding CurrentProgressReport.ProgressValue}" />
+                        <TextBlock Height="20"
+                                   Margin="20,0"
+                                   HorizontalAlignment="Center"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource ValidationSummaryColor1}"
+                                   Text="{Binding CurrentProgressReport.ProgressString}" />
+                    </Grid>
+                    <Button Grid.Column="1" Command="{Binding CancelProcessingDataCommand}">X</Button>
+                </Grid>
+
+            </StackPanel>
+
+            <ContentControl Content="{Binding Child}" />
+
+
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <ListView Grid.Row="0" ItemsSource="{Binding Messages}" />
+            </Grid>
+            
+            <DataGrid Grid.Column="1" ItemsSource="{Binding Cars}" AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Owner" Binding="{Binding Owner}"></DataGridTextColumn>
+                    <DataGridTemplateColumn Header="Make">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <ComboBox ItemsSource="{Binding Source={StaticResource CarMakesProvider}}" SelectedItem="{Binding Make}" ></ComboBox>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    <DataGridComboBoxColumn Header="Make" ItemsSource="{Binding Source={StaticResource CarMakesProvider}}" SelectedItemBinding="{Binding Make}"></DataGridComboBoxColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</controls:MetroWindow>
