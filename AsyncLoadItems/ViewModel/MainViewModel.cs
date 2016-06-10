@@ -1,24 +1,26 @@
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 using GalaSoft.MvvmLight;
 
 namespace AsyncLoadItems.ViewModel
 {
     /// <summary>
-    /// This class contains properties that the main View can data bind to.
-    /// <para>
-    /// Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
-    /// </para>
-    /// <para>
-    /// You can also use Blend to data bind with the tool's support.
-    /// </para>
-    /// <para>
-    /// See http://www.galasoft.ch/mvvm
-    /// </para>
+    ///     This class contains properties that the main View can data bind to.
+    ///     <para>
+    ///         Use the <strong>mvvminpc</strong> snippet to add bindable properties to this ViewModel.
+    ///     </para>
+    ///     <para>
+    ///         You can also use Blend to data bind with the tool's support.
+    ///     </para>
+    ///     <para>
+    ///         See http://www.galasoft.ch/mvvm
+    ///     </para>
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
         /// <summary>
-        /// Initializes a new instance of the MainViewModel class.
+        ///     Initializes a new instance of the MainViewModel class.
         /// </summary>
         public MainViewModel()
         {
@@ -33,22 +35,48 @@ namespace AsyncLoadItems.ViewModel
 
 
             Cars = new ObservableCollection<CarVm>();
+            InitializeCarsMultipleTasks();
 
-            InitializeCars();
-
+            InitializeCarsWithSeparateTasks();
         }
 
-        private void InitializeCars()
+        public ObservableCollection<CarVm> Cars { get; set; }
+
+        private async void InitializeCarsWithSeparateTasks()
+        {
+            var car1 = CreateCar("Chevy", "Chevette");
+            var car2 = CreateCar("Ford", "F750");
+            var car3 = CreateCar("El", "Camino");
+
+            Cars.Add(car1);
+            Cars.Add(car2);
+            Cars.Add(car3);
+
+            await car1.InitializeEngine();
+            await car2.InitializeEngine();
+            await car3.InitializeEngine();
+        }
+
+
+        private async void InitializeCarsMultipleTasks()
         {
             var car1 = CreateCar("Nissan", "Sentra");
-            var car2 = CreateCar("Honda", "Oddysey");
+            var car2 = CreateCar("Honda", "Odyssey");
             var car3 = CreateCar("Ford", "Pinto");
 
             Cars.Add(car1);
             Cars.Add(car2);
             Cars.Add(car3);
 
+            var task1 = car1.InitializeEngine();
+            var task2 = car2.InitializeEngine();
+            var task3 = car3.InitializeEngine();
+
+            var tasks = new List<Task> {task1, task2, task3};
+
+            await Task.WhenAll(tasks);
         }
+
 
         private CarVm CreateCar(string make, string model)
         {
@@ -58,11 +86,7 @@ namespace AsyncLoadItems.ViewModel
                 Model = model
             };
 
-
             return car;
-
         }
-
-        public ObservableCollection<CarVm> Cars { get; set; }
     }
 }

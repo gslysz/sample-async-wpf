@@ -78,5 +78,19 @@ namespace AsyncLoadItems.ViewModel
                 RaisePropertyChanged();
             }
         }
+
+        public async Task InitializeEngine()
+        {
+            Engine = new CarEngine { NumCCs = 3800, NumCylinders = 6 };
+
+            IsInitializing = true;
+            FeedBack = "Initializing engine...";
+            Task task = Engine.InitializeEngine();
+            await task;
+
+            IsInitializing = false;
+            IsInitialized = true;
+            FeedBack = "";
+        }
     }
 }

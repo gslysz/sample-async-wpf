@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace AsyncLoadItems.ViewModel
@@ -12,9 +13,13 @@ namespace AsyncLoadItems.ViewModel
 
         public int NumCylinders { get; set; }
 
-        public void InitializeEngine()
+        public async Task InitializeEngine()
         {
-            //add long running task with feedback
+            //any long running task
+            await Task.Run(() =>
+            {
+                Thread.Sleep(2000);
+            });
 
         }
     }
