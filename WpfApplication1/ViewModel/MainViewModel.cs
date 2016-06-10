@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.Command;
 
+
 namespace WpfApplication1.ViewModel
 {
     /// <summary>
@@ -235,6 +236,7 @@ namespace WpfApplication1.ViewModel
 
         private void progress_ProgressChanged(object sender, ProgressReport e)
         {
+            
             CurrentProgressReport = e;
         }
 

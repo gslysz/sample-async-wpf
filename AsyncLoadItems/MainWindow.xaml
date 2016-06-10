@@ -1,0 +1,30 @@
+﻿<controls:MetroWindow x:Class="AsyncLoadItems.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AsyncLoadItems"
+        xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:viewModel="clr-namespace:AsyncLoadItems.ViewModel"
+        mc:Ignorable="d"
+        DataContext="{Binding Main, Source={StaticResource Locator}}"
+                      
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type viewModel:CarVm}">
+                <Border BorderBrush="DarkBlue" BorderThickness="5">
+                    <StackPanel>
+                        <TextBlock FontSize="16" FontWeight="Bold" Text="{Binding Make}"></TextBlock>
+                        <TextBlock Text="{Binding Model}"></TextBlock>
+                        <TextBlock Text="{Binding FeedBack}"></TextBlock>
+                    </StackPanel>
+                    
+                </Border>
+            </DataTemplate>
+        </Grid.Resources>
+        <ItemsControl ItemsSource="{Binding Cars}"></ItemsControl>
+        
+    </Grid>
+</controls:MetroWindow>
+
