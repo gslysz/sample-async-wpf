@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleMahappsMvvmLightApp",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncLoadItems", "AsyncLoadItems\AsyncLoadItems.csproj", "{0521A8EE-03BA-4FB8-B62C-B147703DC4E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAsyncWpfApp.Tests", "SampleAsyncWpfApp.Tests\SampleAsyncWpfApp.Tests.csproj", "{C7DFCDA9-296E-4843-B9D8-1FEBC23DEFBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncLoadItems.Tests", "AsyncLoadItems.Tests\AsyncLoadItems.Tests.csproj", "{901B6BC4-901B-42E9-9C41-2C991C9BEA48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{0521A8EE-03BA-4FB8-B62C-B147703DC4E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0521A8EE-03BA-4FB8-B62C-B147703DC4E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0521A8EE-03BA-4FB8-B62C-B147703DC4E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7DFCDA9-296E-4843-B9D8-1FEBC23DEFBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7DFCDA9-296E-4843-B9D8-1FEBC23DEFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7DFCDA9-296E-4843-B9D8-1FEBC23DEFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7DFCDA9-296E-4843-B9D8-1FEBC23DEFBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{901B6BC4-901B-42E9-9C41-2C991C9BEA48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{901B6BC4-901B-42E9-9C41-2C991C9BEA48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{901B6BC4-901B-42E9-9C41-2C991C9BEA48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{901B6BC4-901B-42E9-9C41-2C991C9BEA48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,14 +3,16 @@
                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                      xmlns:local="clr-namespace:AsyncLoadItems"
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:viewModel="clr-namespace:AsyncLoadItems.ViewModel"
                       mc:Ignorable="d"
-                      DataContext="{Binding Main, Source={StaticResource Locator}}" Height="450" Width="250"
-                      SaveWindowPosition="True"
+                      DataContext="{Binding Main, Source={StaticResource Locator}}" Height="600" Width="250"
                       Title="MainWindow">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
         <Grid.Resources>
             <DataTemplate DataType="{x:Type viewModel:CarVm}">
                 <Border BorderBrush="{StaticResource AccentColorBrush2}" BorderThickness="5">
@@ -30,7 +32,10 @@
                 </Border>
             </DataTemplate>
         </Grid.Resources>
-        <ItemsControl ItemsSource="{Binding Cars, UpdateSourceTrigger=PropertyChanged}" />
+        <Button Grid.Row="0" Margin="35,10" Command="{Binding DoInitializationCommand}">
+            <TextBlock Text="Initialize"></TextBlock>
+        </Button>
+        <ItemsControl Grid.Row="1"  ItemsSource="{Binding Cars, UpdateSourceTrigger=PropertyChanged}" />
 
     </Grid>
 </controls:MetroWindow>
