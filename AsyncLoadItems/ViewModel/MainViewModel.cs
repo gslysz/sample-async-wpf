@@ -1,9 +1,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using GalaSoft.MvvmLight;
-using GalaSoft.MvvmLight.CommandWpf;
 
 namespace AsyncLoadItems.ViewModel
 {
@@ -46,25 +44,22 @@ namespace AsyncLoadItems.ViewModel
             Cars.Add(car2);
             Cars.Add(car3);
 
-            DoInitializationCommand = AsyncCommand.Create(InitializeCarsWithSeparateTasks);
-
+            StartEngineCommand = AsyncCommand.Create(InitializeCarsWithSeparateTasks);
         }
 
-       
+
         public ObservableCollection<CarVm> Cars { get; set; }
 
-        public IAsyncCommand DoInitializationCommand { get; set; }
+        public IAsyncCommand StartEngineCommand { get; set; }
 
         private async Task InitializeCarsWithSeparateTasks()
         {
             await Task.Run(async () =>
             {
-                await Cars[0].InitializeEngine();
-                await Cars[1].InitializeEngine();
-                await Cars[2].InitializeEngine();
-
+                await Cars[0].StartEngine();
+                await Cars[1].StartEngine();
+                await Cars[2].StartEngine();
             });
-
         }
 
 
@@ -78,11 +73,11 @@ namespace AsyncLoadItems.ViewModel
             Cars.Add(car2);
             Cars.Add(car3);
 
-            var task1 = car1.InitializeEngine();
-            var task2 = car2.InitializeEngine();
-            var task3 = car3.InitializeEngine();
+            var task1 = car1.StartEngine();
+            var task2 = car2.StartEngine();
+            var task3 = car3.StartEngine();
 
-            var tasks = new List<Task> { task1, task2, task3 };
+            var tasks = new List<Task> {task1, task2, task3};
 
             await Task.WhenAll(tasks);
         }

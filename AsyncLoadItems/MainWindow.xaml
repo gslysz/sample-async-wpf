@@ -22,7 +22,7 @@
                         <Grid>
                             <ProgressBar Background="{StaticResource ValidationBrush2}" Opacity="0.3" Orientation="Horizontal" HorizontalAlignment="Left" Width="150"
                                          Height="25" IsIndeterminate="True"
-                                         Visibility="{Binding IsInitializing, Converter={StaticResource ResourceBoolToVis}}" />
+                                         Visibility="{Binding IsEngineStarting, Converter={StaticResource ResourceBoolToVis}}" />
                             <TextBlock HorizontalAlignment="Left" Text="{Binding FeedBack}" />
 
                         </Grid>
@@ -32,7 +32,7 @@
                 </Border>
             </DataTemplate>
         </Grid.Resources>
-        <Button Grid.Row="0" Margin="35,10" Command="{Binding DoInitializationCommand}">
+        <Button Grid.Row="0" Margin="35,10" Command="{Binding StartEngineCommand}">
             <TextBlock Text="Initialize"></TextBlock>
         </Button>
         <ItemsControl Grid.Row="1"  ItemsSource="{Binding Cars, UpdateSourceTrigger=PropertyChanged}" />

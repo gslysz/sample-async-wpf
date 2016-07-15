@@ -14,8 +14,8 @@ namespace AsyncLoadItems.ViewModel
         private CarEngine _engine;
         private string _model;
         private string _make;
-        private bool _isInitializing;
-        private bool _isInitialized;
+        private bool _isEngineStarting;
+        private bool _isEngineStarted;
 
 
         public string Make
@@ -48,22 +48,22 @@ namespace AsyncLoadItems.ViewModel
             }
         }
 
-        public bool IsInitializing
+        public bool IsEngineStarting
         {
-            get { return _isInitializing; }
+            get { return _isEngineStarting; }
             set
             {
-                _isInitializing = value;
+                _isEngineStarting = value;
                 RaisePropertyChanged();
             }
         }
 
-        public bool IsInitialized
+        public bool IsEngineStarted
         {
-            get { return _isInitialized; }
+            get { return _isEngineStarted; }
             set
             {
-                _isInitialized = value;
+                _isEngineStarted = value;
                 RaisePropertyChanged();
             }
         }
@@ -79,18 +79,18 @@ namespace AsyncLoadItems.ViewModel
             }
         }
 
-        public async Task InitializeEngine()
+        public async Task StartEngine()
         {
             Engine = new CarEngine { NumCCs = 3800, NumCylinders = 6 };
 
-            IsInitializing = true;
-            FeedBack = "Initializing engine...";
+            IsEngineStarting = true;
+            FeedBack = "Starting engine...";
             Task task = Engine.InitializeEngine();
             await task;
 
-            IsInitializing = false;
-            IsInitialized = true;
-            FeedBack = "";
+            IsEngineStarting = false;
+            IsEngineStarted = true;
+            FeedBack = "Bruuuuum!";
         }
     }
 }
