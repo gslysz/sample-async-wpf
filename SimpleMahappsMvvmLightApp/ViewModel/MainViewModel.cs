@@ -1,6 +1,7 @@
 using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.CommandWpf;
 using GalaSoft.MvvmLight.Messaging;
 using SimpleMahappsMvvmLightApp.Service;
 
@@ -37,7 +38,7 @@ namespace SimpleMahappsMvvmLightApp.ViewModel
             ////    // Code runs "for real"
             ////}
             _service = service;
-            ShowSimpleDialogCommand = new RelayCommand(async() =>ShowSimpleDialog());
+            ShowSimpleDialogCommand = new GalaSoft.MvvmLight.Command.RelayCommand(async() =>ShowSimpleDialog());
         }
 
         public ICommand ShowSimpleDialogCommand { get; set; }
