@@ -1,0 +1,54 @@
+﻿<Window x:Class="DragAndDropToWindow.LayoutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DragAndDropToWindow"
+        xmlns:dd="urn:gong-wpf-dragdrop"
+        xmlns:viewModel="clr-namespace:DragAndDropToWindow.ViewModel"
+        xmlns:views="clr-namespace:DragAndDropToWindow.Views"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" d:DataContext="{d:DesignInstance viewModel:MainViewModel}">
+    <Window.Resources>
+        <DataTemplate DataType="{x:Type viewModel:PersonVm}">
+            <views:PersonView/>
+        </DataTemplate>
+
+        <DataTemplate x:Key="DragAdorner">
+            <Border Background="Silver"
+                    Height="500"
+                    Width="500"
+                    BorderBrush="Gray"
+                    BorderThickness="1"
+                    CornerRadius="2"
+                    SnapsToDevicePixels="True">
+               <Image Source="Resources/dragImage1.png"></Image>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="DragAdorner2">
+            <Border Background="Silver"
+                    BorderBrush="Gray"
+                    BorderThickness="1"
+                    CornerRadius="2"
+                    SnapsToDevicePixels="True">
+                <StackPanel Orientation="Horizontal" Margin="4">
+                    
+                    <TextBlock Text="DragAdorner2"
+                               Margin="6 0 0 0"
+                               VerticalAlignment="Center" />
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+
+    </Window.Resources>
+
+    <Grid>
+        <ListBox dd:DragDrop.IsDragSource="True" dd:DragDrop.IsDropTarget="True" dd:DragDrop.UseDefaultDragAdorner="False"
+                 dd:DragDrop.DragAdornerTemplate="{StaticResource DragAdorner2}"
+                 dd:DragDrop.UseDefaultEffectDataTemplate="True"
+                 ItemsSource="{Binding Persons}"></ListBox>
+        <!--<ListBox  ItemsSource="{Binding Persons}"></ListBox>-->
+
+    </Grid>
+</Window>

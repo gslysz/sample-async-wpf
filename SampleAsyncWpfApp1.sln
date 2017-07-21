@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GroupBoxWithAttachedPropert
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CanvasWithBoundControlsMvvm", "CanvasWithBoundControlsMvvm\CanvasWithBoundControlsMvvm.csproj", "{8CA3A487-0531-43DD-9B64-151B88814E2B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DragAndDropToWindow", "DragAndDropToWindow\DragAndDropToWindow.csproj", "{F1739940-6F55-43DE-BF89-7D99421723DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GwsUtils", "GwsUtils\GwsUtils.csproj", "{16173CB8-160D-4424-9D4E-8E4D28FF365F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{8CA3A487-0531-43DD-9B64-151B88814E2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CA3A487-0531-43DD-9B64-151B88814E2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CA3A487-0531-43DD-9B64-151B88814E2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1739940-6F55-43DE-BF89-7D99421723DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1739940-6F55-43DE-BF89-7D99421723DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1739940-6F55-43DE-BF89-7D99421723DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1739940-6F55-43DE-BF89-7D99421723DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16173CB8-160D-4424-9D4E-8E4D28FF365F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16173CB8-160D-4424-9D4E-8E4D28FF365F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16173CB8-160D-4424-9D4E-8E4D28FF365F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16173CB8-160D-4424-9D4E-8E4D28FF365F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
