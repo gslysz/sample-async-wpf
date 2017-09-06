@@ -34,7 +34,7 @@
 
         <DataTemplate x:Key="DragAdorner2">
             
-            <Image Height="500" Width="500" Stretch="UniformToFill" Source="Resources/dragImage1.png"></Image>
+            <Image  Height="300" Width="300" Opacity="0.5" Stretch="UniformToFill" Source="Resources/dragImage1.png"></Image>
         </DataTemplate>
 
     </Window.Resources>

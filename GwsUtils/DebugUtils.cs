@@ -74,7 +74,7 @@ namespace GwsUtils
             string fileTag = "";
             if (addDateTimeTagToFileName)
                 fileTag = $"_{DateTime.Now:HHmmss-fff}";
-            string fileName = $"DebugOutput{fileTag}.txt";
+            string fileName = $"DebugOutput2{fileTag}.txt";
 
             string outputFilePath = Path.Combine(baseFolder, fileName);
             CreateOutputFile(outputFilePath);
