@@ -1,0 +1,41 @@
+﻿<Window x:Class="LedLightControl.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:LedLightControl"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:LedLightControl.ViewModel"
+        Title="MainWindow"
+        Width="525"
+        Height="350"
+        Background="LightGray"
+        mc:Ignorable="d">
+    <Window.DataContext>
+        <viewModel:MainViewModel />
+    </Window.DataContext>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <local:LedLightView Margin="10"
+                            LedBorderThickness="15"
+                            FillColor="{Binding LedLightColor}"
+                            LedBorderColor="Black"
+                            ShowLight="{Binding IsLightDisplayed}" />
+
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+
+            <Button Margin="10" Command="{Binding ToggleLightCommand}">
+                <TextBlock Text="Toggle Light" />
+            </Button>
+
+            <Button Margin="10" Command="{Binding ChangeLightColorCommand}">
+                <TextBlock Text="Change Light Color" />
+            </Button>
+
+        </StackPanel>
+
+    </Grid>
+</Window>
