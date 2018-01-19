@@ -13,12 +13,12 @@ namespace AsyncLoadItems.ViewModel
 
         public int NumCylinders { get; set; }
 
-        public async Task InitializeEngine()
+        public async Task InitializeEngine(int engineStartTime)
         {
             //any long running task
             await Task.Run(() =>
             {
-                Thread.Sleep(2000);
+                Thread.Sleep(engineStartTime);
             });
 
         }

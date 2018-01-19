@@ -32,10 +32,21 @@
                 </Border>
             </DataTemplate>
         </Grid.Resources>
-        <Button Grid.Row="0" Margin="35,10" Command="{Binding StartEngineCommand}">
-            <TextBlock Text="Initialize"></TextBlock>
-        </Button>
+        
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <Button  Command="{Binding StartEngineCommand}" MaxWidth="75" Margin="5">
+                <TextBlock TextWrapping="Wrap" Text="Start cars, one at a time"></TextBlock>
+            </Button>
+
+            <Button  Command="{Binding StartEnginesSameTimeCommand}" Margin="5" MaxWidth="75">
+                <TextBlock TextWrapping="Wrap" Text="Start cars, at the same time"></TextBlock>
+            </Button>
+
+        </StackPanel>
+        
         <ItemsControl Grid.Row="1"  ItemsSource="{Binding Cars, UpdateSourceTrigger=PropertyChanged}" />
+
+        
 
     </Grid>
 </controls:MetroWindow>

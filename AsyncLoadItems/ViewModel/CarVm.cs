@@ -79,13 +79,13 @@ namespace AsyncLoadItems.ViewModel
             }
         }
 
-        public async Task StartEngine()
+        public async Task StartEngine(int engineStartTime = 2000)
         {
             Engine = new CarEngine { NumCCs = 3800, NumCylinders = 6 };
 
             IsEngineStarting = true;
             FeedBack = "Starting engine...";
-            Task task = Engine.InitializeEngine();
+            Task task = Engine.InitializeEngine(engineStartTime);
             await task;
 
             IsEngineStarting = false;
