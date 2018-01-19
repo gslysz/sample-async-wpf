@@ -6,9 +6,13 @@
                       xmlns:controls="http://metro.mahapps.com/winfx/xaml/controls"
                       xmlns:viewModel="clr-namespace:AsyncLoadItems.ViewModel"
                       mc:Ignorable="d"
-                      DataContext="{Binding Main, Source={StaticResource Locator}}" Height="600" Width="250"
+                      DataContext="{Binding Main, Source={StaticResource Locator}}" Height="800" Width="500"
                       Title="MainWindow">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition />
@@ -23,7 +27,11 @@
                             <ProgressBar Background="{StaticResource ValidationBrush2}" Opacity="0.3" Orientation="Horizontal" HorizontalAlignment="Left" Width="150"
                                          Height="25" IsIndeterminate="True"
                                          Visibility="{Binding IsEngineStarting, Converter={StaticResource ResourceBoolToVis}}" />
-                            <TextBlock HorizontalAlignment="Left" Text="{Binding FeedBack}" />
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock HorizontalAlignment="Left" Text="{Binding FeedBack}"/>
+                                <TextBlock HorizontalAlignment="Left" Text="Turbo= "/>
+                                <TextBlock HorizontalAlignment="Left" Text="{Binding Engine.HasTurbo}"/>
+                            </StackPanel>  
 
                         </Grid>
 
@@ -33,7 +41,7 @@
             </DataTemplate>
         </Grid.Resources>
         
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal">
             <Button  Command="{Binding StartEngineCommand}" MaxWidth="75" Margin="5">
                 <TextBlock TextWrapping="Wrap" Text="Start cars, one at a time"></TextBlock>
             </Button>
@@ -42,11 +50,19 @@
                 <TextBlock TextWrapping="Wrap" Text="Start cars, at the same time"></TextBlock>
             </Button>
 
+            <Button  Command="{Binding UpgradeCarsAsyncCommand}" Margin="5" MaxWidth="90">
+                <TextBlock TextWrapping="Wrap" Text="Upgrade cars (consumer-producer scenario)"></TextBlock>
+            </Button>
+
+
         </StackPanel>
         
-        <ItemsControl Grid.Row="1"  ItemsSource="{Binding Cars, UpdateSourceTrigger=PropertyChanged}" />
+        <ItemsControl Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Cars, UpdateSourceTrigger=PropertyChanged}" />
 
-        
+        <ScrollViewer Grid.Row="1" Grid.Column="1">
+        <ItemsControl  ItemsSource="{Binding CarsForUpgrading, UpdateSourceTrigger=PropertyChanged}" />
+        </ScrollViewer>
+
 
     </Grid>
 </controls:MetroWindow>

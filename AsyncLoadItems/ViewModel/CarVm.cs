@@ -17,6 +17,11 @@ namespace AsyncLoadItems.ViewModel
         private bool _isEngineStarting;
         private bool _isEngineStarted;
 
+        public CarVm()
+        {
+            Engine = new CarEngine { NumCCs = 3800, NumCylinders = 6 };
+        }
+
 
         public string Make
         {
@@ -91,6 +96,41 @@ namespace AsyncLoadItems.ViewModel
             IsEngineStarting = false;
             IsEngineStarted = true;
             FeedBack = "Bruuuuum!";
+        }
+
+
+        public EngineResult PullEngine(int pullEngineTime = 1000)
+        {
+            var result=  Engine.PullEngine(pullEngineTime);
+            FeedBack = "Engine Pulled ";
+            return result;
+
+        }
+
+
+        //public async Task UpgradeEngineTask(int upgradeEngineTime = 3000)
+        //{
+        //    FeedBack = "Upgrading engine...";
+        //    Task task = Engine.UpgradeEngine(upgradeEngineTime);
+        //    await task;
+
+
+        //    FeedBack = "Upgraded engine";
+        //}
+
+
+    }
+
+    public class EngineResult
+    {
+        public CarEngine Engine { get; set; }
+
+        public string Status { get; set; }
+
+        public void Upgrade(int upgradeTime= 2000)
+        {
+            Engine.UpgradeEngine(upgradeTime);
+            Console.WriteLine($"Engine upgraded!");
         }
     }
 }
