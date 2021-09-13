@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31129.286
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAsyncWpfApp", "WpfApplication1\SampleAsyncWpfApp.csproj", "{BB848575-EC18-41B5-9B23-CB2AE0280D40}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LedLightControl", "LedLightControl\LedLightControl.csproj", "{C1BBBA59-1225-4603-89D9-395CADDBB04E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsyncProcessItems1", "AsyncProcessItems1\AsyncProcessItems1.csproj", "{2536C75A-9148-4333-A55D-8E9345E4E143}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MahAppsIconExamples", "MahAppsIconExamples\MahAppsIconExamples.csproj", "{4993EDE6-A0A9-4E75-AFFB-5012E1F925F8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,8 +77,15 @@ Global
 		{2536C75A-9148-4333-A55D-8E9345E4E143}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2536C75A-9148-4333-A55D-8E9345E4E143}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2536C75A-9148-4333-A55D-8E9345E4E143}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4993EDE6-A0A9-4E75-AFFB-5012E1F925F8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4993EDE6-A0A9-4E75-AFFB-5012E1F925F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4993EDE6-A0A9-4E75-AFFB-5012E1F925F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4993EDE6-A0A9-4E75-AFFB-5012E1F925F8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0C8CF070-6FB5-476C-9E77-6EF509198B8D}
 	EndGlobalSection
 EndGlobal
