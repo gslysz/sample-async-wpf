@@ -22,6 +22,8 @@ namespace DragAndDropToWindow
     public LayoutWindow()
     {
       InitializeComponent();
+
+      //Comment #1 
     }
   }
 }
